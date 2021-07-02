@@ -1,0 +1,326 @@
+@startuml
+set namespaceSeparator ::
+
+class "masroufna::backend::firebaseController.dart::FireBase" {
+  +String* email
+  +String* roomName
+  +String* password
+  +BuildContext* context
+  +List<dynamic>* roomMembers
+  +List<dynamic>* usersInfo
+  +List<dynamic>* room
+  +List<dynamic>* invoices
+  +String* roomId
+  +double* amount
+  +String* description
+  +String* invoiceId
+  +String* name
+  +String* pictureName
+  +String* surname
+  +FirebaseUser* user
+  +Future<String*>* signIn()
+  +Future<dynamic>* signUp()
+  +Future<void>* logout()
+  +Future<dynamic>* uploadInvoicToDataBase()
+  +Future<dynamic>* makeRoomDataBase()
+  +Future<dynamic>* userid()
+  +Future<dynamic>* getRoomsFroomDatabase()
+  +Future<dynamic>* getTheInvocesfromDataBase()
+  +Future<dynamic>* deleteInvoicesFromdataBase()
+  +Future<dynamic>* deleteRoomsFromdataBase()
+  +Future<String*>* getImage()
+  +Future<dynamic>* uploadUserDataToDataBase()
+  +Future<bool*>* sendMoneyTo()
+  +Future<bool*>* addBalance()
+  +dynamic getTransitions()
+  +Future<double*>* currentUserAmount()
+  +Future<List<String*>*>* isthereCurrentUser()
+  +List<dynamic>* getrooms()
+  +List<dynamic>* getInvoices()
+  +List<dynamic>* getList()
+  +String* getUserEmail()
+  +String* getUserUid()
+}
+
+"masroufna::backend::firebaseController.dart::FireBase" o-- "flutter::src::widgets::framework.dart::BuildContext"
+"masroufna::backend::firebaseController.dart::FireBase" o-- "firebase_auth::firebase_auth.dart::FirebaseUser"
+
+class "masroufna::dashboardScreen.dart::Dashboard" {
+  +String* userName
+  +String* desplayname
+  +_DashboardState* createState()
+}
+
+class "masroufna::dashboardScreen.dart::_DashboardState" {
+  +String* userName
+  +String* desplayname
+  {static} -double* _indicatorSize
+  +TextEditingController* roomController
+  +List<dynamic>* list
+  +List<dynamic>* shareWithMembers
+  {static} +List<dynamic>* rooms
+  {static} +bool* wait
+  {static} -bool* _renderCompleteState
+  +FirebaseMessaging* firebaseMessaging
+  +void initState()
+  +dynamic update()
+  +Future<List<dynamic>*>* getSuggestions()
+  +dynamic getUsers()
+  +Future<void>* getRoom()
+  +void addRoom()
+  -Future<void>* _getMemberList()
+  +void deleteRoom()
+  +Widget* build()
+  -dynamic _list()
+  -dynamic _noList()
+}
+
+"masroufna::dashboardScreen.dart::_DashboardState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"masroufna::dashboardScreen.dart::_DashboardState" o-- "firebase_messaging::firebase_messaging.dart::FirebaseMessaging"
+
+class "masroufna::dashboardScreen.dart::MyDialog" {
+  +String* username
+  +_MyDialogState* createState()
+}
+
+class "masroufna::dashboardScreen.dart::_MyDialogState" {
+  +String* username
+  +_DashboardState* ds
+  +void initState()
+  +Widget* build()
+}
+
+"masroufna::dashboardScreen.dart::_MyDialogState" o-- "masroufna::dashboardScreen.dart::_DashboardState"
+
+class "masroufna::data::InvoicesData.dart::Invoice" {
+  +int* amount
+  +String* description
+  +String* user
+  +String* invoiceId
+  +String* picture
+  +dynamic toJson()
+}
+
+class "masroufna::data::roomDataList.dart::RoomData" {
+  +List<dynamic>* members
+  +String* roomName
+  +dynamic toJson()
+}
+
+class "masroufna::data::UserListData.dart::UsersData" {
+  +String* email
+  +dynamic toJson()
+}
+
+class "masroufna::main.dart::MainMasroufna" {
+  +_MainMasroufnaState* createState()
+}
+
+class "masroufna::main.dart::_MainMasroufnaState" {
+  +String* textValue
+  +FirebaseMessaging* firebaseMessaging
+  +FlutterLocalNotificationsPlugin* flutterLocalNotificationsPlugin
+  +Future<void>* signIn()
+  +void initState()
+  +Future<void>* checkAuth()
+  +dynamic showNotification()
+  +dynamic update()
+  +Widget* build()
+}
+
+"masroufna::main.dart::_MainMasroufnaState" o-- "firebase_messaging::firebase_messaging.dart::FirebaseMessaging"
+"masroufna::main.dart::_MainMasroufnaState" o-- "flutter_local_notifications::src::flutter_local_notifications_plugin.dart::FlutterLocalNotificationsPlugin"
+
+class "masroufna::main.dart::EroorDialog" {
+  +String* error
+  +_EroorDialogState* createState()
+}
+
+class "masroufna::main.dart::_EroorDialogState" {
+  +String* error
+  +void initState()
+  +Widget* build()
+}
+
+class "masroufna::pdf::InvoiceGenerateForm.dart::InvoiceGenerator" {
+  +_InvoiceGeneratorState* createState()
+}
+
+class "masroufna::pdf::InvoiceGenerateForm.dart::_InvoiceGeneratorState" {
+  +Widget* build()
+}
+
+class "masroufna::pdf::InvoiceGenerateForm.dart::FormsInvoice" {
+  +_FormsInvoiceState* createState()
+}
+
+class "masroufna::pdf::InvoiceGenerateForm.dart::_FormsInvoiceState" {
+  +Widget* build()
+}
+
+class "masroufna::roomScreen.dart::RoomEnter" {
+  +String* roomName
+  +String* username
+  +String* roomId
+  +List<dynamic>* members
+  +_RoomEnterState* createState()
+}
+
+class "masroufna::roomScreen.dart::_RoomEnterState" {
+  +String* roomName
+  +String* username
+  +String* roomId
+  +List<dynamic>* members
+  {static} -double* _indicatorSize
+  -bool* _renderCompleteState
+  +double* amoumt
+  +String* description
+  +double* userTotalAmount
+  +double* totalAmountOfUsers
+  +bool* errorAmount
+  +bool* errordes
+  +bool* wait
+  +File* newfile
+  +dynamic pickedFile
+  +TextEditingController* desController
+  +TextEditingController* amountController
+  +ImagePicker* picker
+  {static} +String* path
+  +void initState()
+  +Future<void>* getInvoices()
+  +void deleteInvoice()
+  -dynamic _deleteAll()
+  +Future<void>* addAmount()
+  +void getTheTotalAmountonTheInvoice()
+  +void getTheOverAllInvoice()
+  +Future<void>* setImage()
+  +Future<String*>* uploadPictur()
+  +Widget* build()
+  -Future<void>* _neverSatisfied()
+  -dynamic _noList()
+  -Widget* _list()
+  -Widget* _buildCategories()
+  -dynamic _pdfmaker()
+  +Future<void>* alertDialog()
+  +Future<void>* membersAlert()
+  {static} -List<Series<LinearSales*, int*>*>* _createSampleData()
+}
+
+"masroufna::roomScreen.dart::_RoomEnterState" o-- "dart::io::File"
+"masroufna::roomScreen.dart::_RoomEnterState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"masroufna::roomScreen.dart::_RoomEnterState" o-- "image_picker::image_picker.dart::ImagePicker"
+
+class "masroufna::roomScreen.dart::LinearSales" {
+  +int* user
+  +int* total
+  +dynamic color
+}
+
+class "masroufna::roomScreen.dart::Category" {
+  +IconData* icon
+  +String* title
+  +Color* backgroundColor
+  +Function* onPress
+  +Widget* build()
+}
+
+"masroufna::roomScreen.dart::Category" o-- "flutter::src::widgets::icon_data.dart::IconData"
+"masroufna::roomScreen.dart::Category" o-- "dart::ui::Color"
+
+class "masroufna::roomScreen.dart::PicVewer" {
+  +dynamic picurl
+  +Widget* build()
+}
+
+class "masroufna::SendMoney.dart::SendMony" {
+  +List<dynamic>* members
+  +String* userName
+  +_SendMonyState* createState()
+}
+
+class "masroufna::SendMoney.dart::_SendMonyState" {
+  +List<dynamic>* members
+  +String* userName
+  +double* uAmount
+  +double* amount
+  +bool* transionStatuss
+  +dynamic dropdownValue
+  +List<String*>* membersName
+  +FireBase* fb
+  +TextEditingController* amountController
+  +void initState()
+  +dynamic checkAmount()
+  +dynamic s_monry()
+  +Widget* build()
+}
+
+"masroufna::SendMoney.dart::_SendMonyState" o-- "masroufna::backend::firebaseController.dart::FireBase"
+"masroufna::SendMoney.dart::_SendMonyState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+
+class "masroufna::signupScreen.dart::SignUp" {
+  +_SignUpState* createState()
+}
+
+class "masroufna::signupScreen.dart::_SignUpState" {
+  -GlobalKey<FormState*>* _signUpFormKey
+  -String* _email
+  -String* _password
+  -String* _firstName
+  -String* _lastName
+  +Future<dynamic>* signUp()
+  +Widget* build()
+}
+
+"masroufna::signupScreen.dart::_SignUpState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+
+class "masroufna::theme::colorsMasroufna.dart::MasroufnaColors" {
+  {static} +Color* blackgreen
+  {static} +Color* blue
+  {static} +Color* orang
+  {static} +Color* red
+  {static} +Color* grey
+  {static} +Color* yellow
+  {static} +Color* blackgrey
+}
+
+"masroufna::theme::colorsMasroufna.dart::MasroufnaColors" o-- "dart::ui::Color"
+
+class "masroufna::transtionsScreen.dart::Transitions" {
+  +_TransitionsState* createState()
+}
+
+class "masroufna::transtionsScreen.dart::_TransitionsState" {
+  +FireBase* fb
+  +dynamic list
+  +List<dynamic>* tlist
+  +void initState()
+  +dynamic getTransitions()
+  +Widget* build()
+}
+
+"masroufna::transtionsScreen.dart::_TransitionsState" o-- "masroufna::backend::firebaseController.dart::FireBase"
+
+class "masroufna::userProfiel.dart::UserProfile" {
+  +_UserProfileState* createState()
+}
+
+class "masroufna::userProfiel.dart::_UserProfileState" {
+  +bool* wait
+  +double* amount
+  +TextEditingController* amountController
+  -dynamic _image
+  +File* newfile
+  +ImagePicker* picker
+  +void initState()
+  +Future<void>* setImage()
+  +Future<void>* getImage()
+  +dynamic getMonryBalance()
+  +Widget* build()
+}
+
+"masroufna::userProfiel.dart::_UserProfileState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"masroufna::userProfiel.dart::_UserProfileState" o-- "dart::io::File"
+"masroufna::userProfiel.dart::_UserProfileState" o-- "image_picker::image_picker.dart::ImagePicker"
+
+
+@enduml

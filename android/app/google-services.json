@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "374576874883",
+    "firebase_url": "https://masroufna-com.firebaseio.com",
+    "project_id": "masroufna-com",
+    "storage_bucket": "masroufna-com.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:374576874883:android:ebd2a4abd8dbf74564e2b6",
+        "android_client_info": {
+          "package_name": "com.example.masroufna"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "374576874883-k1n53nvdlq27hdik072l5qpnv2bj6ns3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWE_h-00fbhJtbbPdjLQ3NQFlLmQfGj0k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "374576874883-k1n53nvdlq27hdik072l5qpnv2bj6ns3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
